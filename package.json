@@ -9,7 +9,7 @@
     "prepare": "husky"
   },
   "lint-staged": {
-    "**/*.js": "npm run lint"
+    "**/*.js": "npx prettier --check"
   },
   "devDependencies": {
     "@babel/core": "^7.28.0",
