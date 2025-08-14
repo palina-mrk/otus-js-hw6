@@ -1,4 +1,4 @@
-import '../css/style.css';
+import './css/style.css';
 
 const initialBGC = getBGC(document.body);
 const inputToRead = document.getElementById("change-bgc__new");
