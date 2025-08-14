@@ -1,0 +1,23 @@
+.change-bgc__wrapper {
+  display: grid;
+  grid-template-columns: auto, 20px;
+  gap: 10px 20px;
+  justify-content: start;
+  align-items: center;
+}
+
+.change-bgc__text {
+  color: rgba(0, 0, 0, 0.87);
+  grid-column: 1 / 2;
+}
+
+.change-bgc__input {
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  border: rgba(0, 0, 0, 0.87) solid 2px;
+  background-color: gray;
+  border-radius: 20%;
+  grid-column: 2 / 3;
+  cursor: pointer;
+}
