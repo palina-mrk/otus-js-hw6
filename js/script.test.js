@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 const fs = require("fs");
-const htmlData = fs.readFileSync("../index.html");
+const htmlData = fs.readFileSync("./index.html");
 document.body.innerHTML = htmlData;
 
 const { setBGC, getBGC } = require("./script.js");
