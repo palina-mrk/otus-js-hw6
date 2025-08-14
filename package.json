@@ -8,10 +8,11 @@
     "lint:fix": "prettier --write .",
     "prepare": "husky",
     "lint-staged": "lint-staged",
-    "postinstall": "husky install"
+    "postinstall": "husky install",
+    "build": "mkdir dist && cp index.html dist && cp -r css dist && cp -r js dist"
   },
   "lint-staged": {
-    "*.js": "prettier --check"
+    "*.{css,js,html,yml,md}": "prettier --write"
   },
   "devDependencies": {
     "@babel/core": "^7.28.0",
