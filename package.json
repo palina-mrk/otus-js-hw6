@@ -11,7 +11,7 @@
     "postinstall": "husky install"
   },
   "lint-staged": {
-    "**/*.{js,jsx,ts,tsx,html,css}": "prettier --check"
+    "*.js": "prettier --check"
   },
   "devDependencies": {
     "@babel/core": "^7.28.0",

@@ -18,6 +18,10 @@ function getBGC(elem) {
   return elem.style.backgroundColor;
 }
 
+function sum(a, b) {
+  return a + b;
+}
+
 module.exports = {
   setBGC,
   getBGC,
