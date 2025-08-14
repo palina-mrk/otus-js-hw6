@@ -1,3 +1,5 @@
+import '../css/style.css';
+
 const initialBGC = getBGC(document.body);
 const inputToRead = document.getElementById("change-bgc__new");
 const buttonToReset = document.getElementById("change-bgc__init");
