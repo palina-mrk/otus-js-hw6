@@ -8,7 +8,7 @@
     "lint:fix": "prettier --write .",
     "prepare": "husky",
     "lint-staged": "lint-staged",
-    "build": "mkdir dist && cp index.html dist && cp -r css dist && cp -r js dist"
+    "build": "mkdir -p dist && cp index.html dist && cp -r css dist && cp -r js dist"
   },
   "lint-staged": {
     "*.{css,js,html,yml,md}": "prettier --write"
