@@ -3,8 +3,9 @@
  */
 const fs = require("fs");
 const htmlData = fs.readFileSync("./index.html");
+document.body.innerHTML = htmlData;
 
-const { setBGC, getBGC } = require("./functions.js");
+const { setBGC, getBGC } = require("./script.js");
 
 describe("getBGC(elem) returns background color of the element", () => {
   it("is a function", () => {
