@@ -6,10 +6,12 @@
     "eslint:fix": "eslint --fix",
     "lint": "prettier --check .",
     "lint:fix": "prettier --write .",
-    "prepare": "husky"
+    "prepare": "husky",
+    "lint-staged": "lint-staged",
+    "postinstall": "husky install"
   },
   "lint-staged": {
-    "**/*.js": "npx prettier --check"
+    "**/*.{js,jsx,ts,tsx,html,css}": "prettier --check"
   },
   "devDependencies": {
     "@babel/core": "^7.28.0",
