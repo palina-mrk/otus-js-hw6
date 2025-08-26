@@ -52,7 +52,8 @@ describe("showWeather", () => {
     const minskWeather = {
       name: "Минск",
       weather: [{ description: "ясно" }],
-      main: { temp: 30, temp_feel: 28 },
+      main: { temp: 30 },
+      feels_like: { value: 28 },
       wind: { speed: 18 },
     };
     const newContainer = document.createElement("div");
