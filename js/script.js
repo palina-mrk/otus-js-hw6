@@ -1,4 +1,4 @@
-(async function () {
+async function weather() {
   // Получаем указатели на нужные элементы
   const formEl = document.querySelector("form");
   const weatherInfoEl = document.querySelector("#weatherInfo");
@@ -26,8 +26,10 @@
    * @param {string} cityName
    */
   async function getWeather(cityName) {
-    const appId = '63b151efb40928e868a13e6198b120c9';
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?units=metric&q=${cityName}&units=metric&lang=ru&appid=${appId}`); 
+    const appId = "63b151efb40928e868a13e6198b120c9";
+    const response = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?units=metric&q=${cityName}&units=metric&lang=ru&appid=${appId}`,
+    );
     const responseJson = await response.json();
     return responseJson;
   }
@@ -45,4 +47,10 @@
     const weather = await getWeather(cityName);
     showWeather(weatherInfoEl, weather);
   });
-})();
+}
+
+weather();
+
+module.exports = {
+  weather,
+};
