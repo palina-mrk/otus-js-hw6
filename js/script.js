@@ -11,20 +11,8 @@ async function weather() {
 ощущается как: ${objectWeather.main.temp} &deg;С,
 ветер: ${objectWeather.wind.speed} м/с`;
     el.innerHTML = innerHTML;
-    //el.innerHTML = innerHTML + JSON.stringify(weatherInfo, null, 2);
   }
 
-  /**
-   * Функция должна делать запрос на
-   * https://api.openweathermap.org/data/2.5/weather?units=metric&q={{CITY_NAME}}&appid={{APP_ID}}
-   * где
-   *  {{CITY_NAME}} должен быть заменен на имя города
-   *  {{APP_ID}} должен быть заменен на ключ приложения
-   * Запрос возвращает данные в формате JSON
-   *
-   * функция должна возвращать (Promise) данные с информацией о погоде
-   * @param {string} cityName
-   */
   async function getWeather(cityName) {
     const appId = "63b151efb40928e868a13e6198b120c9";
     const response = await fetch(
