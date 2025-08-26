@@ -5,11 +5,12 @@ async function weather() {
 
   function showWeather(el, weatherInfo) {
     const objectWeather = weatherInfo;
-    const innerHTML = `Погода в городе ${objectWeather.name}:
-состояние: ${objectWeather.weather[0].description},
-температура: ${objectWeather.main.temp} &deg;С,
-ощущается как: ${objectWeather.main.temp} &deg;С,
-ветер: ${objectWeather.wind.speed} м/с`;
+    const innerHTML = `
+<p>Погода в городе ${objectWeather.name}:</p>
+<p>состояние: ${objectWeather.weather[0].description},</p>
+<p>температура: ${objectWeather.main.temp} &deg;С,</p>
+<p>ощущается как: ${objectWeather.main.temp} &deg;С,</p>
+<p>ветер: ${objectWeather.wind.speed} м/с</p>`;
     el.innerHTML = innerHTML;
   }
 

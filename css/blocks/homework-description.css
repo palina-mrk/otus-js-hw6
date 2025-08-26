@@ -1,14 +1,28 @@
-.homework-description {
-  padding: 20px 0;
-  text-align: center;
+h1, h2, p {
+  padding: 0;
+  margin: 0;
+  font-size: 24px;
+  font-family: 'Courier New' 'Arial' sans-serif;
 }
 
-.homework-description__heading {
-  color: rgb(69, 69, 212);
-  margin: 0;
+h1, h2 {
+  font-size: 30px;
 }
 
-.homework-description__note {
-  color: rgb(100, 100, 100);
-  margin: 0;
+h1 + p {
+  color: gray;
+  margin: 0 0 20px;
+}
+
+button,
+input {
+  padding: 5px;
+  font-size: 20px;
+  border-radius: 8px;
+}
+
+form + div {
+  font-size: 24px;
+  line-height: 28px;
+  margin: 20px 0;
 }
