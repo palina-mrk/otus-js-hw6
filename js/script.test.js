@@ -26,15 +26,22 @@ describe("getWeather", () => {
   it("is a function", () => {
     expect(getWeather).toBeInstanceOf(Function);
   });
-  // it("correctly returns background color of the element", () => {
-  //   const newContainer = document.createElement("div");
-  //   newContainer.style.backgroundColor = "green";
-  //   document.body.append(newContainer);
 
-  //   expect(getBGC(newContainer)).toBe("green");
+  fetch = jest.fn((someData) =>
+    Promise.resolve({
+      json: () => Promise.resolve({ data: someData }),
+      ok: true,
+      status: 200,
+    }),
+  );
 
-  //   newContainer.remove();
-  // });
+  it("returns an object", () => {
+    expect(getWeather("minsk")).toBeInstanceOf(Object);
+  });
+  it("imports the city name into address string", async () => {
+    let obj = await getWeather("minsk");
+    expect(obj.data.indexOf("minsk") > 0).toBe(true);
+  });
 });
 
 describe("showWeather", () => {
