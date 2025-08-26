@@ -28,6 +28,7 @@ const config = {
     "!**/vendor/**",
     "!**/*.test.js",
     "!*.config.js",
+    "!**/dist/**",
   ],
 
   // The directory where Jest should output its coverage files
