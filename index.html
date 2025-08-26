@@ -10,38 +10,24 @@
       <section class="homework-description">
         <div class="container">
           <h1 class="homework-description__heading">
-            Домашняя работа №6 по JavaScript
+            Домашняя работа №7 по JavaScript
           </h1>
-          <p class="homework-description__note">
-            настройка линтера, хуков и github pages через workflows
-          </p>
+          <p class="homework-description__note">погода</p>
         </div>
       </section>
 
       <section class="change-bgc">
         <div class="container">
-          <h2 class="change-bgc__header">
-            Тестовая задача: изменение цвета фона
-          </h2>
-          <div class="change-bgc__wrapper">
-            <span class="change-bgc__text">изменить цвет фона</span>
+          <form>
             <input
-              class="change-bgc__input"
-              type="color"
-              name="change-bgc__new"
-              id="change-bgc__new"
-              value=""
+              id="userInput"
+              placeholder="Type city and press enter"
+              required
+              autofocus
             />
-
-            <span class="change-bgc__text">вернуть исходный цвет фона</span>
-            <input
-              class="change-bgc__input"
-              type="button"
-              name="change-bgc__init"
-              id="change-bgc__init"
-              value=""
-            />
-          </div>
+            <button>Get weather</button>
+          </form>
+          <pre id="weatherInfo"></pre>
         </div>
       </section>
     </main>
