@@ -4,7 +4,7 @@ function showWeather(el, weatherInfo) {
 <p>Погода в городе ${objectWeather.name}:</p>
 <p>состояние: ${objectWeather.weather[0].description},</p>
 <p>температура: ${objectWeather.main.temp} &deg;С,</p>
-<p>ощущается как: ${objectWeather.feels_like.value} &deg;С,</p>
+<p>ощущается как: ${objectWeather.main.feels_like} &deg;С,</p>
 <p>ветер: ${objectWeather.wind.speed} м/с</p>`;
   el.innerHTML = innerHTML;
 }
