@@ -136,11 +136,6 @@ async function drawHistory(listEl) {
 }
 
 async function weather() {
-  const ymap3 = await fetch(
-    "https://api-maps.yandex.ru/v3/?apikey=6f130378-8e07-4626-a413-392271cdb214&lang=ru_RU",
-  );
-  console.log(ymap3);
-
   // Получаем указатели на нужные элементы
   const formEl = document.querySelector("#cityForm");
   const weatherInfoEl = document.querySelector("#weatherData");
