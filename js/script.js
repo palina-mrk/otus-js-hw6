@@ -120,19 +120,19 @@ async function drawHistory(listEl) {
     let listItem = document.createElement("div");
     listItem.classList.add("history-item");
     await drawItem(listItem, cities[i]);
+    listEl.append(listItem);
 
     listItem.addEventListener("click", async (ev) => {
-      const cityName = ev.target.querySelector("h3").innerHTML.split(" ")[0];
+      const cityName = ev.target.querySelector("h3").innerHTML.split(",")[0];
       const weather = await getWeather(cityName);
 
       if (await weather) {
         showWeather(document.querySelector("#weatherData"), weather);
-        changeMap(weather);
         addToHistory(weather);
         drawHistory(document.querySelector(".history-list"));
+        changeMap(weather);
       }
     });
-    listEl.append(listItem);
   }
 }
 
@@ -178,9 +178,9 @@ async function weather() {
 
     if (await weather) {
       showWeather(weatherInfoEl, weather);
-      changeMap(weather);
       addToHistory(weather);
       drawHistory(historyList);
+      changeMap(weather);
     }
   });
 
