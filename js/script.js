@@ -130,7 +130,7 @@ async function drawHistory(listEl) {
         showWeather(document.querySelector("#weatherData"), weather);
         addToHistory(weather);
         drawHistory(document.querySelector(".history-list"));
-        changeMap(weather);
+        await changeMap(weather);
       }
     });
   }
@@ -165,7 +165,7 @@ async function weather() {
   if (!defaultCity) defaultCity = "moscow";
   let defaultWeather = await getWeather(defaultCity);
   showWeather(weatherInfoEl, await defaultWeather);
-  changeMap(await defaultWeather);
+  await changeMap(await defaultWeather);
 
   formEl.addEventListener("submit", async (ev) => {
     // чтобы не перезагружать страницу
@@ -180,7 +180,7 @@ async function weather() {
       showWeather(weatherInfoEl, weather);
       addToHistory(weather);
       drawHistory(historyList);
-      changeMap(weather);
+      await changeMap(weather);
     }
   });
 
