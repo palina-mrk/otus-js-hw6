@@ -127,12 +127,31 @@ async function drawHistory(listEl) {
 
       if (await weather) {
         showWeather(document.querySelector("#weatherData"), weather);
+        changeMap(weather);
         addToHistory(weather);
         drawHistory(document.querySelector(".history-list"));
       }
     });
     listEl.append(listItem);
   }
+}
+
+async function changeMap(objectWeather) {
+  await ymaps3.ready;
+
+  const { YMap, YMapDefaultSchemeLayer } = ymaps3;
+
+  if (document.getElementById("map").firstElementChild)
+    document.getElementById("map").firstElementChild.remove();
+
+  const map = new YMap(document.getElementById("map"), {
+    location: {
+      center: [objectWeather.coord.lon, objectWeather.coord.lat],
+      zoom: 10,
+    },
+  });
+
+  map.addChild(new YMapDefaultSchemeLayer());
 }
 
 async function weather() {
@@ -146,6 +165,7 @@ async function weather() {
   if (!defaultCity) defaultCity = "minsk";
   let defaultWeather = await getWeather(defaultCity);
   showWeather(weatherInfoEl, defaultWeather);
+  changeMap(defaultWeather);
 
   formEl.addEventListener("submit", async (ev) => {
     // чтобы не перезагружать страницу
@@ -158,6 +178,7 @@ async function weather() {
 
     if (await weather) {
       showWeather(weatherInfoEl, weather);
+      changeMap(weather);
       addToHistory(weather);
       drawHistory(historyList);
     }
