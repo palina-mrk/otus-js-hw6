@@ -136,7 +136,7 @@ async function drawHistory(listEl) {
   }
 }
 
-/*async function changeMap(objectWeather) {
+async function changeMap(objectWeather) {
   await ymaps3.ready;
 
   const { YMap, YMapDefaultSchemeLayer } = ymaps3;
@@ -152,14 +152,9 @@ async function drawHistory(listEl) {
   });
 
   map.addChild(new YMapDefaultSchemeLayer());
-}*/
+}
 
 async function weather() {
-  const x = await fetch(
-    "https://api-maps.yandex.ru/v3/?apikey=6f130378-8e07-4626-a413-392271cdb214&lang=ru_RU",
-  );
-  console.log(x);
-
   // Получаем указатели на нужные элементы
   const formEl = document.querySelector("#cityForm");
   const weatherInfoEl = document.querySelector("#weatherData");
@@ -169,8 +164,8 @@ async function weather() {
   let defaultCity = await getCity();
   if (!defaultCity) defaultCity = "minsk";
   let defaultWeather = await getWeather(defaultCity);
-  showWeather(weatherInfoEl, defaultWeather);
-  //changeMap(defaultWeather);
+  showWeather(weatherInfoEl, await defaultWeather);
+  changeMap(await defaultWeather);
 
   formEl.addEventListener("submit", async (ev) => {
     // чтобы не перезагружать страницу
@@ -183,7 +178,7 @@ async function weather() {
 
     if (await weather) {
       showWeather(weatherInfoEl, weather);
-      //changeMap(weather);
+      changeMap(weather);
       addToHistory(weather);
       drawHistory(historyList);
     }
