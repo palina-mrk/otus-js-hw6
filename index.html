@@ -15,7 +15,7 @@
     <!-- Main CSS -->
     <link rel="stylesheet" href="css/styles.css" />
     <script src="https://api-maps.yandex.ru/v3/?apikey=6f130378-8e07-4626-a413-392271cdb214&lang=ru_RU"></script>
-    <script>
+    <!--script>
       initMap();
 
       async function initMap() {
@@ -32,7 +32,7 @@
 
         map.addChild(new YMapDefaultSchemeLayer());
       }
-    </script>
+    </script-->
   </head>
   <body>
     <div id="root">
@@ -41,7 +41,7 @@
         <div class="container header-container">
           <h1>
             <i class="fas fa-cloud-sun"></i>
-            Weather Forecast
+            Прогноз погоды
           </h1>
           <nav class="nav-menu">
             <input type="checkbox" id="menu-toggle" class="menu-toggle" />
@@ -49,12 +49,12 @@
               <span class="hamburger-icon"></span>
             </label>
             <ul class="menu-items">
-              <li><a href="#">Home</a></li>
+              <li><a href="#">Домой</a></li>
 
               <li>
-                <a href="#" class="active">Example Data</a>
+                <a href="#" class="active">Пример с данными</a>
               </li>
-              <li><a href="#">Blank State</a></li>
+              <li><a href="#">Чистое состояние</a></li>
             </ul>
           </nav>
         </div>
@@ -63,15 +63,15 @@
       <main class="container">
         <div class="page-explanation">
           <p>
-            This is a state of the Weather Forecast app with active weather data
-            and search history for London.
+            Это состояние приложения "Прогноз погоды" с активными данными о
+            погоде и историей поиска.
           </p>
         </div>
 
         <!-- Search Form -->
         <section class="search-section">
           <div class="card">
-            <h2>Search for a city</h2>
+            <h2>Показать погоду в городе:</h2>
             <form id="cityForm">
               <div class="input-wrapper">
                 <input
@@ -91,7 +91,7 @@
                 </button>
               </div>
               <button type="submit" id="searchButton" class="btn-primary">
-                Search
+                Искать
               </button>
             </form>
           </div>
@@ -172,7 +172,7 @@
                 <div class="section-header">
                   <h2>
                     <i class="fas fa-map-marker-alt"></i>
-                    Location Map
+                    Карта местности
                   </h2>
                 </div>
                 <div id="map" class="map-container">
@@ -190,7 +190,7 @@
                 <div class="section-header">
                   <h2>
                     <i class="fas fa-history"></i>
-                    Search History
+                    История поиска
                   </h2>
                 </div>
 
@@ -281,7 +281,7 @@
                   <div class="history-actions">
                     <button class="btn-secondary">
                       <i class="fas fa-trash-alt"></i>
-                      Clear History
+                      Очистить историю
                     </button>
                   </div>
                 </div>

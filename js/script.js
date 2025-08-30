@@ -162,7 +162,7 @@ async function weather() {
   drawHistory(historyList);
 
   let defaultCity = await getCity();
-  if (!defaultCity) defaultCity = "minsk";
+  if (!defaultCity) defaultCity = "moscow";
   let defaultWeather = await getWeather(defaultCity);
   showWeather(weatherInfoEl, await defaultWeather);
   changeMap(await defaultWeather);
@@ -182,6 +182,18 @@ async function weather() {
       addToHistory(weather);
       drawHistory(historyList);
     }
+  });
+
+  document
+    .querySelector(".history-container")
+    .querySelector(".btn-secondary")
+    .addEventListener("click", () => {
+      localStorage.clear();
+      drawHistory(historyList);
+    });
+
+  formEl.querySelector("#clearButton").addEventListener("click", () => {
+    formEl.querySelector("input").value = "";
   });
 }
 
