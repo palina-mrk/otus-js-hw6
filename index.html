@@ -2,36 +2,311 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JS - homework 7</title>
-    <link rel="stylesheet" href="./css/style.css" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1"
+    />
+    <title>Weather Forecast - With Data</title>
+    <!-- Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="https://api-maps.yandex.ru/v3/?apikey=6f130378-8e07-4626-a413-392271cdb214&lang=ru_RU"></script>
+    <script>
+      initMap();
+
+      async function initMap() {
+        await ymaps3.ready;
+
+        const { YMap, YMapDefaultSchemeLayer } = ymaps3;
+
+        const map = new YMap(document.getElementById("map"), {
+          location: {
+            center: [37.588144, 55.733842],
+            zoom: 10,
+          },
+        });
+
+        map.addChild(new YMapDefaultSchemeLayer());
+      }
+    </script>
   </head>
   <body>
-    <main>
-      <section class="homework-description">
-        <div class="container">
-          <h1 class="homework-description__heading">
-            Домашняя работа №7 по JavaScript
+    <div id="root">
+      <!-- Header -->
+      <header>
+        <div class="container header-container">
+          <h1>
+            <i class="fas fa-cloud-sun"></i>
+            Weather Forecast
           </h1>
-          <p class="homework-description__note">погода</p>
-        </div>
-      </section>
+          <nav class="nav-menu">
+            <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+            <label for="menu-toggle" class="menu-toggle-label">
+              <span class="hamburger-icon"></span>
+            </label>
+            <ul class="menu-items">
+              <li><a href="#">Home</a></li>
 
-      <section class="change-bgc">
-        <div class="container">
-          <form>
-            <input
-              id="userInput"
-              placeholder="Type city and press enter"
-              required
-              autofocus
-            />
-            <button>Get weather</button>
-          </form>
-          <div id="weatherInfo"></div>
+              <li>
+                <a href="#" class="active">Example Data</a>
+              </li>
+              <li><a href="#">Blank State</a></li>
+            </ul>
+          </nav>
         </div>
-      </section>
-      <script src="./js/script.js"></script>
-    </main>
+      </header>
+
+      <main class="container">
+        <div class="page-explanation">
+          <p>
+            This is a state of the Weather Forecast app with active weather data
+            and search history for London.
+          </p>
+        </div>
+
+        <!-- Search Form -->
+        <section class="search-section">
+          <div class="card">
+            <h2>Search for a city</h2>
+            <form id="cityForm">
+              <div class="input-wrapper">
+                <input
+                  type="text"
+                  id="cityInput"
+                  placeholder="Введите название города"
+                  aria-label="Название города"
+                  value="Минск"
+                />
+                <button
+                  type="button"
+                  id="clearButton"
+                  class="clear-button"
+                  aria-label="Clear input"
+                >
+                  <i class="fas fa-times-circle"></i>
+                </button>
+              </div>
+              <button type="submit" id="searchButton" class="btn-primary">
+                Search
+              </button>
+            </form>
+          </div>
+        </section>
+
+        <!-- Desktop layout container for main content and sidebar -->
+        <div class="desktop-container">
+          <!-- Main content - Weather and Map -->
+          <div class="main-content">
+            <!-- Weather Display -->
+            <section class="weather-section">
+              <div class="card">
+                <!-- Weather data container -->
+                <div id="weatherData">
+                  <div class="weather-header">
+                    <div>
+                      <h2 id="cityName">London, GB</h2>
+                      <p id="currentDateTime">
+                        Monday, April 29,
+                        <script>
+                          document.write(new Date().getFullYear());
+                        </script>
+                      </p>
+                    </div>
+                    <div class="last-updated">
+                      <i class="fas fa-history"></i>
+                      <span id="lastUpdated">Updated just now</span>
+                    </div>
+                  </div>
+
+                  <div class="weather-content">
+                    <div class="current-weather">
+                      <div class="weather-primary">
+                        <div class="weather-icon">
+                          <img
+                            src="https://openweathermap.org/img/wn/04d@2x.png"
+                            alt="Broken Clouds"
+                          />
+                        </div>
+                        <div>
+                          <div class="temperature">15°C</div>
+                          <div class="weather-description">Broken Clouds</div>
+                        </div>
+                      </div>
+
+                      <div class="weather-details">
+                        <div class="weather-detail">
+                          <i class="fas fa-wind"></i>
+                          <div>
+                            <p>Ветер</p>
+                            <p>4.1 m/s</p>
+                          </div>
+                        </div>
+                        <div class="weather-detail">
+                          <i class="fas fa-tint"></i>
+                          <div>
+                            <p>Влажность</p>
+                            <p>76%</p>
+                          </div>
+                        </div>
+                        <div class="weather-detail">
+                          <i class="fas fa-compress-alt"></i>
+                          <div>
+                            <p>Давление</p>
+                            <p>1015 hPa</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Map Display -->
+            <section class="map-section">
+              <div class="card">
+                <div class="section-header">
+                  <h2>
+                    <i class="fas fa-map-marker-alt"></i>
+                    Location Map
+                  </h2>
+                </div>
+                <div
+                  id="map"
+                  class="map-container"
+                  style="width: 600px; height: 400px"
+                >
+                  <!-- Map image (Base64 placeholder) -->
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- Sidebar - Search History -->
+          <div class="sidebar">
+            <!-- Search History -->
+            <section class="history-section">
+              <div class="card">
+                <div class="section-header">
+                  <h2>
+                    <i class="fas fa-history"></i>
+                    Search History
+                  </h2>
+                </div>
+
+                <div class="history-container">
+                  <div class="history-list">
+                    <!-- History items -->
+                    <div class="history-item">
+                      <div class="history-item-city">
+                        <div class="city-icon">
+                          <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="city-info">
+                          <h3>London, GB</h3>
+                          <p>Apr 29, 09:30 AM</p>
+                        </div>
+                      </div>
+                      <div class="history-item-weather">
+                        <p>15°C</p>
+                        <p>Broken Clouds</p>
+                      </div>
+                    </div>
+
+                    <div class="history-item">
+                      <div class="history-item-city">
+                        <div class="city-icon">
+                          <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="city-info">
+                          <h3>Paris, FR</h3>
+                          <p>Apr 29, 08:45 AM</p>
+                        </div>
+                      </div>
+                      <div class="history-item-weather">
+                        <p>17°C</p>
+                        <p>Partly Cloudy</p>
+                      </div>
+                    </div>
+
+                    <div class="history-item">
+                      <div class="history-item-city">
+                        <div class="city-icon">
+                          <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="city-info">
+                          <h3>New York, US</h3>
+                          <p>Apr 29, 08:30 AM</p>
+                        </div>
+                      </div>
+                      <div class="history-item-weather">
+                        <p>12°C</p>
+                        <p>Light Rain</p>
+                      </div>
+                    </div>
+
+                    <div class="history-item">
+                      <div class="history-item-city">
+                        <div class="city-icon">
+                          <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="city-info">
+                          <h3>Tokyo, JP</h3>
+                          <p>Apr 29, 07:15 AM</p>
+                        </div>
+                      </div>
+                      <div class="history-item-weather">
+                        <p>22°C</p>
+                        <p>Clear Sky</p>
+                      </div>
+                    </div>
+
+                    <div class="history-item">
+                      <div class="history-item-city">
+                        <div class="city-icon">
+                          <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="city-info">
+                          <h3>Berlin, DE</h3>
+                          <p>Apr 29, 06:45 AM</p>
+                        </div>
+                      </div>
+                      <div class="history-item-weather">
+                        <p>14°C</p>
+                        <p>Few Clouds</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="history-actions">
+                    <button class="btn-secondary">
+                      <i class="fas fa-trash-alt"></i>
+                      Clear History
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </main>
+
+      <footer>
+        <div class="container">
+          <p>
+            Weather Forecast App &copy;
+            <script>
+              document.write(new Date().getFullYear());
+            </script>
+          </p>
+          <p>Weather data provided by OpenWeatherMap</p>
+        </div>
+      </footer>
+    </div>
+    <script src="./js/script.js"></script>
   </body>
 </html>
